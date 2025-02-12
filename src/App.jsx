@@ -5,6 +5,8 @@ import TodoForm from "./TodoForm";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
+  const [todo, setTodo] = useState("");
+
   return (
     <div>
       <TodoForm />

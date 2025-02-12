@@ -1,12 +1,17 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
-const TodoForm = ({ payload, isEditing, todos, setTodos, onCancel }) => {
+const TodoForm = ({ payload, isEditing, todos, setTodos, oncancel }) => {
   const [todo, setTodo] = useState(payload ?? "");
-  const onChange = (e) => setTodo(e.target.value);
+
+  const onChange = (e) => {
+    setTodo(e.target.value);
+  };
+
   const onSubmit = (e) => {
     e.preventDefault();
-    if (todo.lenght === 0) {
+
+    if (todo.length === 0) {
       alert("");
       return;
     }
@@ -16,11 +21,12 @@ const TodoForm = ({ payload, isEditing, todos, setTodos, onCancel }) => {
       return;
     }
   };
+
   return (
-    <form action="">
+    <form onSubmit={onSubmit}>
       <div>
         <label htmlFor="item">장 볼 물건</label>
-        <input type="text" id="item" />
+        <input type="text" id="item" onChange={onChange} />
       </div>
       <button>추가</button>
     </form>
@@ -29,11 +35,12 @@ const TodoForm = ({ payload, isEditing, todos, setTodos, onCancel }) => {
 
 export default TodoForm;
 
-TodoForm.PropTypes = {
+TodoForm.prototypes = {
   payload: PropTypes.string,
   isEditing: PropTypes.bool,
 
   todos: PropTypes.array,
   setTodos: PropTypes.func,
-  onCancel: PropTypes,
+
+  oncancel: PropTypes.func,
 };
