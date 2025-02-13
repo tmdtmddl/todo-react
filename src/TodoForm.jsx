@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 
 const TodoForm = ({ payload, isEditing, todos, setTodos, onCancel }) => {
   const [todo, setTodo] = useState(payload ?? "");
+
   const onChange = (e) => setTodo(e.target.value);
 
   const onSubmit = (e) => {
