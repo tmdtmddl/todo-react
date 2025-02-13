@@ -3,9 +3,8 @@ import { useState } from "react";
 import TodoForm from "./TodoForm";
 
 const TodoItem = ({ todos, setTodos, payload, index }) => {
-  const onDelete = () => {
+  const onDelete = () =>
     setTodos((prev) => prev.filter((item) => item !== payload));
-  };
 
   const [isEditing, setIsEditing] = useState(false);
   const editHandler = () => setIsEditing((prev) => !prev);
@@ -23,7 +22,7 @@ const TodoItem = ({ todos, setTodos, payload, index }) => {
       ) : (
         <>
           <p>
-            {index + 1}.{payload}
+            {index + 1}. {payload}
           </p>
           <button onClick={editHandler}>수정</button>
           <button onClick={onDelete}>삭제</button>
@@ -35,7 +34,7 @@ const TodoItem = ({ todos, setTodos, payload, index }) => {
 
 export default TodoItem;
 
-TodoItem.protType = {
+TodoItem.propTypes = {
   todos: PropTypes.array,
   setTodos: PropTypes.func,
   payload: PropTypes.string,

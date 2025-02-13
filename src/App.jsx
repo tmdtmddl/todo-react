@@ -1,15 +1,11 @@
 import "./style.css";
 import { useState } from "react";
-import TodoForm from "./TodoForm";
 import TodoItem from "./TodoItem";
+import TodoForm from "./TodoForm";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
 
-  // useEffect(() => {
-  //   console.log(requirement)
-  //   console.log(detail)
-  // }, [requirement, detail])
   return (
     <div>
       <TodoForm todos={todos} setTodos={setTodos} />
@@ -18,10 +14,10 @@ const App = () => {
           return (
             <TodoItem
               key={todo}
+              index={index}
               payload={todo}
               setTodos={setTodos}
               todos={todos}
-              index={index}
             />
           );
         })}
