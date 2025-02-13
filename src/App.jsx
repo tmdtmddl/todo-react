@@ -11,7 +11,15 @@ const App = () => {
       <TodoForm todos={todos} setTodos={setTodos} />
       <ul>
         {todos.map((todo, index) => {
-          return <TodoItem key={todo} index={index} />;
+          return (
+            <TodoItem
+              key={todo}
+              payload={todo}
+              setTodos={setTodos}
+              todos={todos}
+              index={index}
+            />
+          );
         })}
       </ul>
     </div>
