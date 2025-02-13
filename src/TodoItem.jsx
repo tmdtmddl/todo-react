@@ -2,18 +2,20 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import TodoForm from "./TodoForm";
 
-const TodoItem = () => {
-  const onDelete = () =>
+const TodoItem = ({ todos, setTodos, payload, index }) => {
+  const onDelete = () => {
     setTodos((prev) => prev.filter((item) => item !== payload));
+  };
+
   const [isEditing, setIsEditing] = useState(false);
-  const editHeandler = () => setIsEditing((prev) => !prev);
+  const editHandler = () => setIsEditing((prev) => !prev);
 
   return (
     <li>
       {isEditing ? (
         <TodoForm
           isEditing={isEditing}
-          onCancel={oncancel}
+          onCancel={editHandler}
           payload={payload}
           setTodos={setTodos}
           todos={todos}
@@ -23,8 +25,8 @@ const TodoItem = () => {
           <p>
             {index + 1}.{payload}
           </p>
-          <button>수정</button>
-          <button>삭제</button>
+          <button onClick={editHandler}>수정</button>
+          <button onClick={onDelete}>삭제</button>
         </>
       )}
     </li>
@@ -33,7 +35,7 @@ const TodoItem = () => {
 
 export default TodoItem;
 
-TodoItem.propTypes = {
+TodoItem.protType = {
   todos: PropTypes.array,
   setTodos: PropTypes.func,
   payload: PropTypes.string,

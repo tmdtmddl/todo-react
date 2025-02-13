@@ -3,44 +3,46 @@ import { useState, useRef } from "react";
 
 const TodoForm = ({ payload, isEditing, todos, setTodos, onCancel }) => {
   const [todo, setTodo] = useState(payload ?? "");
-
-  const onChange = (e) => {
-    setTodo(e.target.value);
-  };
+  const onChange = (e) => setTodo(e.target.value);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     if (todo.length === 0) {
-      alert("아무것도 입력ㄴㄴ");
+      alert("아무것도 입력되자 않았습니다");
       return;
     }
+
     const foundTodo = todos.find((item) => item === todo);
     if (foundTodo) {
-      alert("중복된값");
+      alert("중복된 값입니다");
       return;
     }
 
     setTodos((prev) => {
       let copy = [...prev];
+
       if (isEditing) {
         const index = todos.findIndex((item) => item === payload);
-        if (index >= 0) {
-          copy[index] = todo;
+
+        if (index) {
+          copy.splice(index, 1);
         }
       } else {
         copy.unshift(todo);
       }
+
       return copy;
     });
-    alert(isEditing ? "수정됨" : "추가됨");
+
+    alert(isEditing ? "수정되었습니다" : "추가되었습니다");
+
     setTodo("");
   };
-
   return (
-    <form onSubmit={onSubmit}>
+    <form action="" onSubmit={onSubmit}>
       <div>
-        <label htmlFor="item">장 볼 물건</label>
+        <label htmlFor="item">장볼 물건</label>
         <input type="text" id="item" value={todo} onChange={onChange} />
       </div>
       <button>{isEditing ? "수정" : "추가"}</button>
@@ -55,7 +57,7 @@ const TodoForm = ({ payload, isEditing, todos, setTodos, onCancel }) => {
 
 export default TodoForm;
 
-TodoForm.proptypes = {
+TodoForm.propTypes = {
   payload: PropTypes.string,
   isEditing: PropTypes.bool,
 
