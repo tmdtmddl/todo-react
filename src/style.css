@@ -16,6 +16,9 @@ form {
   column-gap: 10px;
   padding: 30px;
 }
+ul form {
+  padding: 0;
+}
 form div {
   display: flex;
   flex-direction: column;

@@ -19,12 +19,12 @@
 
   3.Item만들기 (READ)
 
-+todos의 todo를 출력하면 됨
+  +todos의 todo를 출력하면 됨
 
-+수정버튼을 눌렀을 때 Form을 그려주면 됨
+  +수정버튼을 눌렀을 때 Form을 그려주면 됨
 
-+**주의**: payload로 todo전달, 수정하는 boolean전달
+  +**주의**: payload로 todo전달, 수정하는 boolean전달
 
-+삭제 기능도 필요함
+  +삭제 기능도 필요함
 
-+todo, todos, setTodos를 받아와야 함
+  +todo, todos, setTodos를 받아와야 함

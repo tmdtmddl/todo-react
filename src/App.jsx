@@ -5,15 +5,14 @@ import TodoForm from "./TodoForm";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
-  const [todo, setTodo] = useState("");
 
   return (
     <div>
-      <TodoForm />
+      <TodoForm todos={todos} setTodos={setTodos} />
       <ul>
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
+        {todos.map((todo, index) => {
+          return <TodoItem key={todo} index={index} />;
+        })}
       </ul>
     </div>
   );
