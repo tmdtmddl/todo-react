@@ -27,6 +27,8 @@ const TodoForm = ({ payload, isEditing, todos, setTodos, onCancel }) => {
         const index = todos.findIndex((item) => item === payload);
         if (index >= 0) {
           copy[index] = todo;
+          console.log(index);
+          console.log(payload);
         }
       } else {
         copy.unshift(todo);
