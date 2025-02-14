@@ -3,8 +3,11 @@ import { useState } from "react";
 import TodoForm from "./TodoForm";
 
 const TodoItem = ({ todos, setTodos, payload, index }) => {
-  const onDelete = () =>
+  const onDelete = () => {
     setTodos((prev) => prev.filter((item) => item !== payload));
+    console.log(payload);
+    console.log(todos);
+  };
 
   const [isEditing, setIsEditing] = useState(false);
   const editHandler = () => setIsEditing((prev) => !prev);
