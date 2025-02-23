@@ -21,17 +21,21 @@ const TodoForm = ({ payload, isEditing, todos, setTodos, onCancel }) => {
     }
 
     setTodos((prev) => {
+      // 수정할때
+      console.log({ payload });
+      console.log({ todo });
       let copy = [...prev];
-      console.log(copy);
-
+      // console.log(copy);
       if (isEditing) {
-        const index = todos.findIndex((item) => item === payload);
-        // 아이템에서 페이로드랑 같은게 있는지 검사
+        const index = todos.findIndex((t) => t === payload);
+        // 수정중일때 todo에서 페이로드랑 같은게 있는지 검사
+
         if (index >= 0) {
           copy[index] = todo;
-          // 카피의 이덱스를 지금만들고 있는 투두랑 바꿔치기 해달라
+          // 카피의 인덱스를 지금만들고 있는 투두랑 바꿔치기 해달라
           // console.log(index);
-          // console.log(payload);
+          console.log(payload);
+          console.log(todo);
           // console.log(copy);
         }
       } else {
